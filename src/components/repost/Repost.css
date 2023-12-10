@@ -1,0 +1,18 @@
+.repost-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.repost-with-your-thought-button {
+    margin-left: 180px;
+    border: none;
+    background-color: white;
+}
+  
+.repost-button {
+    margin-bottom: 5px;
+    margin-left: 76px;
+    border: none;
+    background-color: white;
+}
