@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import Like from "../../components/like/Like"
-import Comment from "../../components/comment/Comment";
-import Repost from "../../components/repost/Repost";
+import Like from "../like/Like"
+import Comment from "../comment/Comment";
+import Repost from "../repost/Repost";
 import './PostCard.css';
 import like from "../../assets/like.png";
 import repost from "../../assets/repost.png";

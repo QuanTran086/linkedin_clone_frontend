@@ -1,3 +1,65 @@
+.share-box-feed-entry {
+    height: 100px;
+    width: 540px;
+    margin-top: 20px;
+    margin-left: 2%;
+    border-radius: 15px;
+    font-size: 14px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 5px #ccc;
+}
+
+.share-box-feed-entry-top-bar {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.share-box-feed-entry-avatar {
+    margin-top: -5px;
+    width: 48px;
+    height: 48px;
+}
+
+.start-a-post {
+    width: 460px;
+    height: 40px;
+    border-radius: 35px;
+    border-color: #00000099;
+    margin: 4px 0px;
+    padding: 0px 0px 0px 16px;
+}
+
+.share-box-feed-entry-tool-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    height: 40px;
+}
+
+.share-box-feed-entry-tool-bar-button {
+    display: flex;
+    background-color: #FFFFFF;
+    border: none;
+    align-items: center; 
+    justify-content: center; 
+}
+
+.share-box-feed-entry-tool-bar-button-img {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background-color: #FFFFFF;
+    margin-right: 8px; 
+}
+
+.share-box-feed-entry-tool-bar-button-img-span {
+    text-align: center;
+    color: #00000099;
+}
+
 .feed-container {
     display: flex;
     justify-content: space-between;
