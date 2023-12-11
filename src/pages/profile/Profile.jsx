@@ -25,7 +25,7 @@ const Profile = () => {
                     <button className="activity-button">Create a post</button>
                 </div>
                 <div className="activity">
-                    No activity
+                    <p>You haven't posted yet</p>
                 </div>
             </div>
         </div>
