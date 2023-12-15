@@ -32,6 +32,7 @@ const Post = () => {
         "repost": 0
     }]
 
+    // Set data to State of component
     const [post, setPost] = useState(() => {
         const storedPosts = localStorage.getItem("post")
         return storedPosts ? JSON.parse(storedPosts) : posts
@@ -42,6 +43,7 @@ const Post = () => {
         localStorage.setItem('total post', post.length)
     }, [])
 
+    // Loop through array and render all posts
     let postCards = [];
      
     for (var i = 0; i < post.length; i++) {

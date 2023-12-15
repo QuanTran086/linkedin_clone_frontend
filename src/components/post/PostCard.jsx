@@ -9,9 +9,11 @@ import defaultimage from "../../assets/defaultimage.png"
 
 const liked = require("../../assets/liked.png");
 
+// Like button
 const Like = ({counter, setCounter}) => {
     const [isLiked, setIsLiked] = useState(false);
 
+    // +1 and change image if it is like and -1 and change to original image when clicking the button again
     const likeButton = () => {
         if (isLiked == false) {
             setCounter(counter + 1);
@@ -34,7 +36,10 @@ const Like = ({counter, setCounter}) => {
     )
 }
 
+// Repost button
 const Repost = ({ repost, setRepost }) => {
+
+    // Get data of the post that was reposted
     const Repost = () => {
         var newRepost = {
             "post_id": parseInt(localStorage.getItem('total post'))+1, 
@@ -49,6 +54,7 @@ const Repost = ({ repost, setRepost }) => {
             "repost": repost.repost+1     
         }
 
+        // Store to local storage and render
         var existingPosts = JSON.parse(localStorage.getItem("post"));
         existingPosts.push(newRepost);
         setRepost(existingPosts);
@@ -68,6 +74,7 @@ const Repost = ({ repost, setRepost }) => {
     )
 }
 
+// Comment button
 const Comment = ({ commentCounter, setCommentCounter }) => {    
     const [inputValue, setInputValue] = useState('');
     const [showCommentPost, setShowCommentPost] = useState(false);
@@ -76,7 +83,7 @@ const Comment = ({ commentCounter, setCommentCounter }) => {
     const [deleteButton, setDeleteButton] = useState(false)
     const [postedComment, setPostedComment] = useState('');
 
-
+    // Catch the word user type and set state 
     const handleComment = (e) => {
         setInputValue(e.target.value);
         if (e.target.value.length > 0) {
@@ -86,6 +93,7 @@ const Comment = ({ commentCounter, setCommentCounter }) => {
         }
     }
 
+    // Post comment
     const handePostButton = () => {
         setPostedComment(inputValue);
         setIsRendered(true)
@@ -94,10 +102,12 @@ const Comment = ({ commentCounter, setCommentCounter }) => {
         setCommentCounter(commentCounter + 1)
     }
 
+    // Show the delete comment button
     const showingDeleteButton = () => {
         setDeleteButton(!deleteButton)
     }
 
+    // Delete comment
     const deleting = () => {
         setIsRendered(false)
         setCommentCounter(commentCounter - 1)
