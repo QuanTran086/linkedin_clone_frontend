@@ -1,4 +1,5 @@
 import React from "react";
+import Axios from "axios";
 import { useState, useRef } from "react";
 import { Link, json, useNavigate } from "react-router-dom";
 import linkedin from "../../assets/linkedin.png"
@@ -76,6 +77,13 @@ const SignUp = () => {
 
     const handleStoring = (e) => {
         e.preventDefault()
+        Axios.post("http://localhost:5000/users", {
+            email: email,
+            password: password,
+            username: firstName + " " + lastName,
+            description: job + " at " + company,
+            user_avatar: image
+        })
         const data = {
             "email": email,
             "password": password,
