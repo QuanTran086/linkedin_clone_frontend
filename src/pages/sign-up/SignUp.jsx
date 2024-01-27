@@ -1,7 +1,7 @@
 import React from "react";
 import Axios from "axios";
 import { useState, useRef } from "react";
-import { Link, json, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import linkedin from "../../assets/linkedin.png"
 import defaultImage from "../../assets/defaultimage.png"
 import "./SignUp.css"
@@ -82,20 +82,19 @@ const SignUp = () => {
             password: password,
             username: firstName + " " + lastName,
             description: job + " at " + company,
-            user_avatar: image
         })
-        const data = {
-            "email": email,
-            "password": password,
-            "first_name": firstName,
-            "last_name": lastName,
-            "job": job,
-            "company": company,
-            "user_avatar": image
-        }
-        var existingUsers = JSON.parse(localStorage.getItem("users") || "[]")
-        existingUsers.push(data)
-        localStorage.setItem("users", JSON.stringify(existingUsers))
+        // const data = {
+        //     "email": email,
+        //     "password": password,
+        //     "first_name": firstName,
+        //     "last_name": lastName,
+        //     "job": job,
+        //     "company": company,
+        //     "user_avatar": image
+        // }
+        // var existingUsers = JSON.parse(localStorage.getItem("users") || "[]")
+        // existingUsers.push(data)
+        // localStorage.setItem("users", JSON.stringify(existingUsers))
         navigate("/")
     }
 
