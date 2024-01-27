@@ -109,7 +109,6 @@ const SignUp = () => {
                     <input type="email" value={email} onChange={handleEmailChange}/>
                     <span className="sign-up-form-password">Password (6+ characters)</span>
                     <input type="password" value={password} onChange={handlePasswordChange}/>
-                    <span className="sign-up-form-forgot-password">Forgot password?</span>
                     <button className="sign-up-form-sign-up" onClick={signup}>Sign Up</button>
                     <span>Already on Linkedin? <Link to="/"><span className="sign-up-text">Sign In</span></Link></span>
                 </div>

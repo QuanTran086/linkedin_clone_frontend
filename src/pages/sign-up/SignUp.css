@@ -28,15 +28,6 @@
     font-size: 14px;
 }
 
-.sign-up-form-forgot-password {
-    color: #0A66C2;
-}
-
-.sign-up-form-forgot-password:hover {
-    color: #0A66C2;
-    text-decoration: underline;
-}
-
 .sign-up-form-sign-up {
     border: none;
     background-color: #0A66C2;
