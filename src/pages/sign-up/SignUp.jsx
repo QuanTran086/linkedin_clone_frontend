@@ -83,18 +83,6 @@ const SignUp = () => {
             username: firstName + " " + lastName,
             description: job + " at " + company,
         })
-        // const data = {
-        //     "email": email,
-        //     "password": password,
-        //     "first_name": firstName,
-        //     "last_name": lastName,
-        //     "job": job,
-        //     "company": company,
-        //     "user_avatar": image
-        // }
-        // var existingUsers = JSON.parse(localStorage.getItem("users") || "[]")
-        // existingUsers.push(data)
-        // localStorage.setItem("users", JSON.stringify(existingUsers))
         navigate("/")
     }
 
