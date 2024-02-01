@@ -1,4 +1,5 @@
 import React from "react";
+import Axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import linkedin from "../../assets/linkedin.png"
@@ -20,30 +21,35 @@ const SignIn = () => {
     }
 
     const verify = () => {
-        const storedUsers = JSON.parse(localStorage.getItem("users"));
+        // const storedUsers = JSON.parse(localStorage.getItem("users"));
 
-        if (!storedUsers) {
-            setError(!error)
-            setErrorWindow(!errorWindow)
-            setEmail("")
-            setPassword("")
-            return;
-        }
+        // if (!storedUsers) {
+        //     setError(!error)
+        //     setErrorWindow(!errorWindow)
+        //     setEmail("")
+        //     setPassword("")
+        //     return;
+        // }
 
-        for (var i = 0; i < localStorage.getItem("users").length; i++) {
-            if (email === storedUsers[i].email && password === storedUsers[i].password){
-                navigate("/feed")
-                // Exit the loop when user is found
-                return; 
-            }
-            else {
-                setError(!error)
-                setErrorWindow(!errorWindow)
-                setEmail("")
-                setPassword("")
-                return;
-            }
-        }
+        // for (var i = 0; i < localStorage.getItem("users").length; i++) {
+        //     if (email === storedUsers[i].email && password === storedUsers[i].password){
+        //         navigate("/feed")
+        //         // Exit the loop when user is found
+        //         return; 
+        //     }
+        //     else {
+        //         setError(!error)
+        //         setErrorWindow(!errorWindow)
+        //         setEmail("")
+        //         setPassword("")
+        //         return;
+        //     }
+        // }
+
+        Axios.post("http://localhost:5000/login", {
+            email: email,
+            password: password
+        })
     }
 
     return (

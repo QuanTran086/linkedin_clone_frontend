@@ -77,7 +77,7 @@ const SignUp = () => {
 
     const handleStoring = (e) => {
         e.preventDefault()
-        Axios.post("http://localhost:5000/users", {
+        Axios.post("http://localhost:5000/signup", {
             email: email,
             password: password,
             username: firstName + " " + lastName,
