@@ -21,35 +21,22 @@ const SignIn = () => {
     }
 
     const verify = () => {
-        // const storedUsers = JSON.parse(localStorage.getItem("users"));
-
-        // if (!storedUsers) {
-        //     setError(!error)
-        //     setErrorWindow(!errorWindow)
-        //     setEmail("")
-        //     setPassword("")
-        //     return;
-        // }
-
-        // for (var i = 0; i < localStorage.getItem("users").length; i++) {
-        //     if (email === storedUsers[i].email && password === storedUsers[i].password){
-        //         navigate("/feed")
-        //         // Exit the loop when user is found
-        //         return; 
-        //     }
-        //     else {
-        //         setError(!error)
-        //         setErrorWindow(!errorWindow)
-        //         setEmail("")
-        //         setPassword("")
-        //         return;
-        //     }
-        // }
-
         Axios.post("http://localhost:5000/login", {
             email: email,
             password: password
-        })
+        }).then(
+            response => {
+                if (response.data.message === "Login successful") {
+                    navigate("feed")
+                } else {
+                    setError(!error)
+                    setErrorWindow(!errorWindow)
+                    setEmail("")
+                    setPassword("")
+                    return;
+                }
+            }
+        )
     }
 
     return (
