@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Profile.css";
-import NavBar from "../../components/navbar/Navbar"
-import defaultImage from "../../assets/defaultimage.png"
+import NavBar from "../../components/navbar/Navbar";
+import defaultImage from "../../assets/defaultimage.png";
 
 const Profile = () => {
-    const user = JSON.parse(localStorage.getItem("users"))[0]
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const user = JSON.parse(localStorage.getItem("users"))[0];
+
+    const toggleModal = () => setIsModalOpen(!isModalOpen);
 
     return (
         <div>
@@ -16,8 +19,29 @@ const Profile = () => {
                 <span className="profile-button">
                     <button className="profile-button-open-to">Open to</button>
                     <button className="profile-button-add-section">Add profile section</button>
-                    <button className="profile-button-more">More</button>
+                    <button className="profile-button-more" onClick={toggleModal}>More</button>
                 </span>
+                {isModalOpen && (
+                    <div className="modal">
+                        <div className="modal-content">
+                        <span className="close" onClick={toggleModal}>&times;</span>
+                        <h2>Edit Profile</h2>
+                        <form>
+                            <div className="form-group">
+                            <label htmlFor="password">New Password</label>
+                            <input type="password" id="password" name="password" placeholder="New Password" />
+                            </div>
+                            <div className="form-group">
+                            <label htmlFor="confirm-password">Confirm New Password</label>
+                            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm New Password" />
+                            </div>
+                            <div className="form-group">
+                            <button type="submit" className="save-btn">Save</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                    )}
             </div>
             <div className="activity-container">
                 <div className="activity-header">
@@ -32,4 +56,4 @@ const Profile = () => {
     )
 }
 
-export default Profile
+export default Profile;
