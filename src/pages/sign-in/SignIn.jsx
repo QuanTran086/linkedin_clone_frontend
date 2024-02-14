@@ -26,17 +26,19 @@ const SignIn = () => {
             password: password
         }).then(
             response => {
-                if (response.data.message === "Login successful") {
+                if (response.status === 200) {
                     navigate("feed")
                 } else {
-                    setError(!error)
-                    setErrorWindow(!errorWindow)
-                    setEmail("")
-                    setPassword("")
-                    return;
+                    setError(true); 
+                    setErrorWindow(true);
                 }
-            }
-        )
+        }).catch(error => {
+            setError(true);
+            setErrorWindow(true);
+            setEmail("");
+            setPassword("");
+            console.log(error.response.data);
+        });
     }
 
     return (
