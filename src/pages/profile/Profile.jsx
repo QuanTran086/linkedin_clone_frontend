@@ -6,12 +6,45 @@ import defaultImage from "../../assets/defaultimage.png";
 
 const Profile = () => {
     const [isModelOpen, setIsModelOpen] = useState(false);
+    const [currentPassword, setCurrentPassword] = useState("")
+    const [newPassword, setNewPassword] = useState("")
+    const [confirmedPassword, setConfirmedPassword] = useState("")
+
     const user = JSON.parse(localStorage.getItem("users"))[0];
+
 
     const toggleModel = () => setIsModelOpen(!isModelOpen);
 
+    const handleCurrentPassword = (e) => {
+        setCurrentPassword(e.target.value)
+    }
+
+    const handleNewPassword = (e) => {
+        setNewPassword(e.target.value)
+    }
+
+    const handleConfirmedPassword = (e) => {
+        setConfirmedPassword(e.target.value)
+    }
+
     const updatePassword = () => {
-        
+        Axios.post("http://localhost:5000/update-password", {
+            currentPassword: currentPassword,
+            newPassword: newPassword,
+            confirmedPassword: confirmedPassword
+        }).then(() => {
+            setTimeout(() => {alert("Successfully changed password!")}, 1)
+            setIsModelOpen(!isModelOpen)
+            setCurrentPassword("")
+            setNewPassword("")
+            setConfirmedPassword("")
+        }).catch(() => {
+            setTimeout(() => {alert("Failed to change password")}, 1)
+            setIsModelOpen(!isModelOpen)
+            setCurrentPassword("")
+            setNewPassword("")
+            setConfirmedPassword("")
+        });
     }
 
     return (
@@ -31,28 +64,26 @@ const Profile = () => {
                         <div className="model-content">
                             <span className="close" onClick={toggleModel}>&times;</span>
                             <h2>Update Password</h2>
-                            <form>
-                                <table className="password-table">
-                                    <tbody>
-                                        <tr>
-                                            <td><label>Current Password</label></td>
-                                            <td><input type="password"/></td>
-                                        </tr>
-                                        <tr>
-                                            <td><label>New Password</label></td>
-                                            <td><input type="password"/></td>
-                                        </tr>
-                                        <tr>
-                                            <td><label>Confirm New Password</label></td>
-                                            <td><input type="password"/></td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td><button className="update-button" onClick={updatePassword}>Update Password</button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </form>
+                            <table className="password-table">
+                                <tbody>
+                                    <tr>
+                                        <td><label>Current Password</label></td>
+                                        <td><input type="password" value={currentPassword} onChange={handleCurrentPassword}/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>New Password</label></td>
+                                        <td><input type="password" value={newPassword} onChange={handleNewPassword}/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>Confirm New Password</label></td>
+                                        <td><input type="password" value={confirmedPassword} onChange={handleConfirmedPassword}/></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><button className="update-button" onClick={updatePassword}>Update Password</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 )}
