@@ -10,7 +10,7 @@ const Profile = () => {
     const [newPassword, setNewPassword] = useState("")
     const [confirmedPassword, setConfirmedPassword] = useState("")
 
-    const user = JSON.parse(localStorage.getItem("users"))[0];
+    const user = JSON.parse(localStorage.getItem("user"));
 
 
     const toggleModel = () => setIsModelOpen(!isModelOpen);
@@ -52,8 +52,8 @@ const Profile = () => {
             <NavBar />
             <div className="profile-container">
                 <img src={defaultImage} className="profile-user-avatar"/>
-                <div className="profile-name">{user.first_name} {user.last_name}</div>
-                <div className="profile-description">{user.job} at {user.company}</div>
+                <div className="profile-name">{user.username}</div>
+                <div className="profile-description">{user.description}</div>
                 <span className="profile-button">
                     <button className="profile-button-open-to">Open to</button>
                     <button className="profile-button-add-section">Add profile section</button>

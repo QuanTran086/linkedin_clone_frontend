@@ -4,6 +4,8 @@ import defaultImage from "../../assets/defaultimage.png";
 import "./Navbar.css";
 
 const Navbar = () => {
+    const user = JSON.parse(localStorage.getItem("user"))
+
     return(
         <div className='global-navbar'>
             <NavLink to="/feed">
@@ -46,7 +48,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink to="/profile" className='global-navbar-primary-link'>
               <img src={defaultImage} className='profile-image'/>
-              <span className='global-navbar-element'>Me</span>
+              <span className='global-navbar-element'>{user.username}</span>
             </NavLink>
             <NavLink className='global-navbar-primary-link'>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">

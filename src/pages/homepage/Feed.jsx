@@ -33,7 +33,7 @@ const Sharebox = () => {
 }
 
 const Feed = () => {
-    const user = JSON.parse(localStorage.getItem("users"))[0]
+    const user = JSON.parse(localStorage.getItem("user"))
 
     return (
       <div>
@@ -41,8 +41,8 @@ const Feed = () => {
         <div className="feed-container">
             <div className="entity-module-container">
                 <img src={defaultImage} className="entity-module-avatar"/>
-                <span className="entity-module-name">{user.first_name} {user.last_name}</span>
-                <span className="entity-module-description">{user.job} at {user.company}</span>
+                <span className="entity-module-name">{user.username}</span>
+                <span className="entity-module-description">{user.description}</span>
                 <div className="entity-module-information">
                     <span className="entity-module-information-profile-viewers">Profile viewers</span>
                     <span className="entity-module-information-connections">Connections</span>

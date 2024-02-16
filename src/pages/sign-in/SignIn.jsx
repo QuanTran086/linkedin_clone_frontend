@@ -27,6 +27,7 @@ const SignIn = () => {
         }).then(
             response => {
                 if (response.status === 200) {
+                    localStorage.setItem("user", JSON.stringify(response.data));
                     navigate("feed")
                 } else {
                     setError(true); 
