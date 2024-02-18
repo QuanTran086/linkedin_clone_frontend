@@ -177,9 +177,9 @@ const PostCard = ({ postCard, setPostCard }) => {
         <div className="share-feed">
             <div className="user-menu-container">
                 <div className="user-details">
-                    <img src={postCard.user_avatar} className="profile-image-feed"/>
+                    <img src={postCard.user_avatar || defaultimage} className="profile-image-feed"/>
                     <div className="user-name-description">
-                        <span className="user-name">{postCard.name}</span>
+                        <span className="user-name">{postCard.username}</span>
                         <span className="user-description">{postCard.description}</span>
                         <span className="post-date">{diffTime.getMonth()}m
                             <span style={{margin: '4px', color: '#00000099'}}>•</span>
