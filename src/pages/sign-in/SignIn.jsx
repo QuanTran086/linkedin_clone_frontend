@@ -33,12 +33,11 @@ const SignIn = () => {
                     setError(true); 
                     setErrorWindow(true);
                 }
-        }).catch(error => {
+        }).catch(() => {
             setError(true);
             setErrorWindow(true);
             setEmail("");
             setPassword("");
-            console.log(error.response.data);
         });
     }
 
