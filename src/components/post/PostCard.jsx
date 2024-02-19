@@ -160,9 +160,9 @@ const Comment = ({ commentCounter, setCommentCounter }) => {
 }
 
 const PostCard = ({ postCard, setPostCard }) => {
-    const [counter, setCounter] = useState(postCard.like);
+    const [counter, setCounter] = useState(postCard.like_count);
     const [showCommentInput, setShowCommentInput] = useState(false)
-    const [commentCounter, setCommentCounter] = useState(postCard.comment)
+    const [commentCounter, setCommentCounter] = useState(postCard.comment_count)
     const [open, setOpen] = useState(false)
 
     const showComment = () => {
@@ -219,7 +219,7 @@ const PostCard = ({ postCard, setPostCard }) => {
                     </div>
                     <span style={{margin: '0px 2px 0px -22px', color: '#00000099'}}>•</span>
                     <div className="interaction-item">
-                        <span className="interaction-text">{postCard.repost} Repost</span>
+                        <span className="interaction-text">{postCard.repost_count} Repost</span>
                     </div>
                 </div>
             </div>
