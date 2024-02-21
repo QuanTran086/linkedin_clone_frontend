@@ -18,7 +18,7 @@ const CreatePost = ({ isOpen, onClose }) => {
             like_count: 0,
             repost_count: 0,
             repost_id: 0,
-            user_id: user.username
+            user_id: user.user_id
         })
     }
 
