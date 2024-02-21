@@ -53,7 +53,7 @@
 .user-description {
     display: block;
     font-size: 12px;
-    width: 50%;
+    width: 100%;
     overflow: hidden; 
     white-space: nowrap; 
     text-overflow: ellipsis;
