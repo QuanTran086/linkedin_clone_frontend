@@ -1,19 +1,24 @@
 import React from "react";
+import { useState } from "react";
 import "./Feed.css";
 import Navbar from "../../components/navbar/Navbar";
 import Post from "../../components/post/Post";
+import CreatePost from "../../components/createpost/CreatePost";
 import media from "../../assets/media.png"
 import event from "../../assets/event.png";
 import article from "../../assets/article.png";
 import defaultImage from "../../assets/defaultimage.png";
 
 const Sharebox = () => {
+    const [isModalOpen, setModalOpen] = useState(false);
+
     return(
         <div className="share-box-feed-entry">
             <div className="share-box-feed-entry-top-bar">
                 <img src={defaultImage} className="share-box-feed-entry-avatar"/>
-                <input placeholder="Start a post" className="start-a-post"/>
+                <input placeholder="Start a post" className="start-a-post" onClick={() => setModalOpen(true)}/>
             </div>
+            <CreatePost isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
             <div className="share-box-feed-entry-tool-bar">
                 <button className="share-box-feed-entry-tool-bar-button">
                     <img src={media} className="share-box-feed-entry-tool-bar-button-img"/>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Axios from "axios";
 import "./Profile.css";
 import NavBar from "../../components/navbar/Navbar";
+import CreatePost from "../../components/createpost/CreatePost";
 import defaultImage from "../../assets/defaultimage.png";
 
 const Profile = () => {
@@ -9,6 +10,7 @@ const Profile = () => {
     const [currentPassword, setCurrentPassword] = useState("")
     const [newPassword, setNewPassword] = useState("")
     const [confirmedPassword, setConfirmedPassword] = useState("")
+    const [isModalOpen, setModalOpen] = useState(false);
 
     const user = JSON.parse(localStorage.getItem("user"));
 
@@ -91,8 +93,9 @@ const Profile = () => {
             <div className="activity-container">
                 <div className="activity-header">
                     <span className="activity-text">Activity</span>
-                    <button className="activity-button">Create a post</button>
+                    <button className="activity-button" onClick={() => setModalOpen(true)}>Create a post</button>
                 </div>
+                <CreatePost isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
                 <div className="activity">
                     <p>You haven't posted yet</p>
                 </div>
