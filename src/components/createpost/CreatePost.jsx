@@ -1,6 +1,5 @@
 import React from "react";
 import "./CreatePost.css"
-import defaultImage from "../../assets/defaultimage.png";
 
 const CreatePost = ({ isOpen, onClose }) => {
     if (!isOpen) return null;
@@ -9,8 +8,11 @@ const CreatePost = ({ isOpen, onClose }) => {
     return (
       <div className={`modal-overlay${isOpen ? ' open' : ''}`} onClick={onClose}>
         <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <textarea placeholder="What do you want to talk about?" />
-            <button className="modal-post-button">Post</button>
+            <h1 className="share-your-thought">Share your thought</h1>
+            <div className="create-post-content">
+                <textarea placeholder="What do you want to talk about?" />
+                <button className="modal-post-button">Post</button>
+            </div>
         </div>
       </div>
     );
