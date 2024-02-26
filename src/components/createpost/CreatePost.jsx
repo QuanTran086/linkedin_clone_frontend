@@ -15,10 +15,6 @@ const CreatePost = ({ isOpen, onClose }) => {
     const post = () => {
         Axios.post("http://localhost:5000/posts", {
             postContent: postContent,
-            likeCount: 0,
-            commentCount: 0,
-            repostCount: 0,
-            repostId: 0,
             userId: user.user_id
         })
     }
