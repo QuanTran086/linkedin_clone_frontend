@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Axios from "axios";
 import './PostCard.css';
@@ -216,7 +216,7 @@ const PostCard = ({ postCard, setPostCard }) => {
             </div>
             <div className="share-feed-action-bar">
                 <button className="share-feed-action-bar-button">
-                    <Like counter={counter} setCounter={setCounter} className="share-feed-action-bar-img"/>
+                    <Like post_id={postCard.post_id} user_id={postCard.user_id} counter={counter} setCounter={setCounter} className="share-feed-action-bar-img"/>
                 </button>
                 <button onClick={showComment} className="share-feed-action-bar-button">
                     <img src={comment} className="share-feed-action-bar-img"/>
