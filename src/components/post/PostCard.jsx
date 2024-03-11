@@ -11,19 +11,22 @@ import defaultimage from "../../assets/defaultimage.png"
 const liked = require("../../assets/liked.png");
 
 // Like button
-const Like = ({counter, setCounter}) => {
+const Like = ({post_id, user_id, setCounter}) => {
     const [isLiked, setIsLiked] = useState(false);
 
     const likeButton = () => {
-        if (isLiked == false) {
-            setCounter(counter + 1);
-            setIsLiked(true);
-        } 
-
-        if (isLiked == true) {
-            setCounter(counter - 1);
-            setIsLiked(false);
-        }
+        setIsLiked(!isLiked)
+        Axios.post("http://localhost:5000/like", {
+            post_id: post_id,
+            user_id: user_id,
+            isLiked: isLiked
+        }).then(
+            response => {
+                if (response.status === 200) {
+                    setCounter(response.data.like_count)
+                }
+            }
+        )
     }
 
     return (
@@ -216,7 +219,7 @@ const PostCard = ({ postCard, setPostCard }) => {
             </div>
             <div className="share-feed-action-bar">
                 <button className="share-feed-action-bar-button">
-                    <Like post_id={postCard.post_id} user_id={postCard.user_id} counter={counter} setCounter={setCounter} className="share-feed-action-bar-img"/>
+                    <Like post_id={postCard.post_id} user_id={postCard.user_id} setCounter={setCounter} className="share-feed-action-bar-img"/>
                 </button>
                 <button onClick={showComment} className="share-feed-action-bar-button">
                     <img src={comment} className="share-feed-action-bar-img"/>
