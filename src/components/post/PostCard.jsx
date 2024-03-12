@@ -15,19 +15,17 @@ const Like = ({post_id, user_id, setCounter}) => {
     const [isLiked, setIsLiked] = useState(false);
 
     const likeButton = () => {
-        setIsLiked(!isLiked)
+        setIsLiked(!isLiked);
         Axios.post("http://localhost:5000/like", {
             post_id: post_id,
             user_id: user_id,
-            isLiked: isLiked
-        }).then(
-            response => {
-                if (response.status === 200) {
-                    setCounter(response.data.like_count)
-                }
+            status: !isLiked 
+        }).then(response => {
+            if (response.status === 200) {
+                setCounter(response.data.like_count)
             }
-        )
-    }
+        })
+    };
 
     return (
         <div>
