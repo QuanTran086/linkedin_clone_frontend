@@ -14,15 +14,13 @@ const Post = () => {
         )
     }, [])
 
-    let postCards = [];
-     
-    for (var i = 0; i < post.length; i++) {
-        postCards.push(<PostCard postCard={post[i]} key={i} setPostCard={setPost}/>);
-    }
-
-    return(
-        <div>{postCards}</div>
-    )
+    return (
+        <div>
+            {post.map((post, index) => (
+                <PostCard postCard={post} key={index} setPostCard={setPost}/>
+            ))}
+        </div>
+    );
 }
 
 export default Post;
