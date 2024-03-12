@@ -31,10 +31,10 @@ const Like = ({post_id, user_id, setCounter}) => {
 
     return (
         <div>
-            <buton onClick={likeButton} className='share-feed-action-bar-button'>
+            <button onClick={likeButton} className='share-feed-action-bar-button'>
                 <img src={isLiked ? liked : like} className="share-feed-action-bar-img"/>
                 <span>Like</span>
-            </buton>
+            </button>
         </div>
     )
 }
