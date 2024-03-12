@@ -18,7 +18,7 @@ const Sharebox = () => {
                 <img src={defaultImage} className="share-box-feed-entry-avatar"/>
                 <input placeholder="Start a post" className="start-a-post" onClick={() => setModalOpen(true)}/>
             </div>
-            <CreatePost isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
+            <CreatePost isOpen={isModalOpen} onClose={() => setModalOpen(!isModalOpen)} />
             <div className="share-box-feed-entry-tool-bar">
                 <button className="share-box-feed-entry-tool-bar-button">
                     <img src={media} className="share-box-feed-entry-tool-bar-button-img"/>

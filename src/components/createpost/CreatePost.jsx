@@ -12,10 +12,12 @@ const CreatePost = ({ isOpen, onClose }) => {
         setPostContent(e.target.value)
     }
 
-    const post = () => {
+    const post = () => { 
         Axios.post("http://localhost:5000/posts", {
             postContent: postContent,
             userId: user.user_id
+        }).then(() => {
+            onClose()
         })
     }
 

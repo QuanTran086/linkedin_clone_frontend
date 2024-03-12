@@ -95,7 +95,7 @@ const Profile = () => {
                     <span className="activity-text">Activity</span>
                     <button className="activity-button" onClick={() => setModalOpen(true)}>Create a post</button>
                 </div>
-                <CreatePost isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
+                <CreatePost isOpen={isModalOpen} onClose={() => setModalOpen(!isModalOpen)} />
                 <div className="activity">
                     <p>You haven't posted yet</p>
                 </div>
