@@ -16,8 +16,8 @@ const Post = () => {
 
     return (
         <div>
-            {post.map((post, index) => (
-                <PostCard postCard={post} key={index} setPostCard={setPost}/>
+            {post.map((post) => (
+                <PostCard postCard={post} key={post.post_id} setPostCard={setPost}/>
             ))}
         </div>
     );
