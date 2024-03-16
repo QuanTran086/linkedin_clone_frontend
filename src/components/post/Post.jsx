@@ -5,9 +5,10 @@ import PostCard from "./PostCard";
 
 const Post = () => {
     const [post, setPost] = useState([{}])
+    const currentUser = JSON.parse(localStorage.getItem("user")).user_id
 
     useEffect(() => {
-        Axios.get("http://localhost:5000/posts").then(
+        Axios.post("http://localhost:5000/rendering-posts", {user_id: currentUser}).then(
             response => { 
                 setPost(response.data)
             }
