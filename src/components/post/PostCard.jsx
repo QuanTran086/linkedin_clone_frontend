@@ -83,7 +83,7 @@ const Repost = ({ repost, setRepost }) => {
 }
 
 // Comment button
-const Comment = ({ commentCounter, setCommentCounter }) => {    
+const Comment = ({ commentCounter, setCommentCounter, user_id, post_id }) => {    
     const [inputValue, setInputValue] = useState('');
     const [showCommentPost, setShowCommentPost] = useState(false);
     const [isRendered, setIsRendered] = useState(false);
@@ -101,6 +101,11 @@ const Comment = ({ commentCounter, setCommentCounter }) => {
     }
 
     const handePostButton = () => {
+        Axios.post("http://localhost:5000/comment", {
+            commentContent: inputValue,
+            user_id: user_id,
+            post_id: post_id
+        })
         setPostedComment(inputValue);
         setIsRendered(true)
         setShowCommentPost(false)
@@ -241,7 +246,7 @@ const PostCard = ({ postCard, setPostCard }) => {
                 </button>   
             </div>
             {open && (<Repost repost={postCard} setRepost={setPostCard}/>)}
-            {showCommentInput && <Comment commentCounter={commentCounter} setCommentCounter={setCommentCounter}/>}
+            {showCommentInput && <Comment commentCounter={commentCounter} user_id={postCard.user_id} post_id={postCard.post_id} setCommentCounter={setCommentCounter}/>}
         </div>
     )
 }
