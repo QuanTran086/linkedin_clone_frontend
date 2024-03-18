@@ -1,27 +1,38 @@
 import React from "react";
+import { useState } from "react";
 import Axios from "axios";
-import { useState, useEffect } from "react";
-import PostCard from "./PostCard";
+import "./Post.css"
 
-const Post = () => {
-    const [post, setPost] = useState([{}])
-    const currentUser = JSON.parse(localStorage.getItem("user")).user_id
+const Post = ({ isOpen, onClose }) => {
+    const [postContent, setPostContent] = useState("")
+    if (!isOpen) return null;
+    const user = JSON.parse(localStorage.getItem("user"));
 
-    useEffect(() => {
-        Axios.post("http://localhost:5000/rendering-posts", {user_id: currentUser}).then(
-            response => { 
-                setPost(response.data)
-            }
-        )
-    }, [])
+    const handlePostContent = (e) => {
+        setPostContent(e.target.value)
+    }
+
+    const posting = () => { 
+        Axios.post("http://localhost:5000/posts", {
+            postContent: postContent,
+            userId: user.user_id
+        }).then(() => {
+            onClose()
+        })
+    }
 
     return (
-        <div>
-            {post.map((post) => (
-                <PostCard postCard={post} key={post.post_id} setPostCard={setPost}/>
-            ))}
+      <div className={`modal-overlay${isOpen ? ' open' : ''}`} onClick={onClose}>
+        <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <h1 className="share-your-thought">Share your thought</h1>
+            <div className="create-post-content">
+                <textarea placeholder="What do you want to talk about?" value={postContent} onChange={handlePostContent}/>
+                <button className="modal-post-button" onClick={posting}>Post</button>
+            </div>
         </div>
+      </div>
     );
-}
+};
 
-export default Post;
+
+export default Post

@@ -1,13 +1,36 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Axios from "axios";
 import "./Feed.css";
 import Navbar from "../../components/navbar/Navbar";
 import Post from "../../components/post/Post";
-import CreatePost from "../../components/createpost/CreatePost";
+import PostCard from "../../components/postcard/PostCard";
 import media from "../../assets/media.png"
 import event from "../../assets/event.png";
 import article from "../../assets/article.png";
 import defaultImage from "../../assets/defaultimage.png";
+
+const PostRendering = () => {
+    const [post, setPost] = useState([{}])
+    const currentUser = JSON.parse(localStorage.getItem("user")).user_id
+
+    useEffect(() => {
+        Axios.post("http://localhost:5000/rendering-posts", {user_id: currentUser}).then(
+            response => { 
+                setPost(response.data)
+            }
+        )
+    }, [])
+
+    return (
+        <div>
+            {post.map((post) => (
+                <PostCard postCard={post} key={post.post_id} setPostCard={setPost}/>
+            ))}
+        </div>
+    );
+}
+
 
 const Sharebox = () => {
     const [isModalOpen, setModalOpen] = useState(false);
@@ -18,7 +41,7 @@ const Sharebox = () => {
                 <img src={defaultImage} className="share-box-feed-entry-avatar"/>
                 <input placeholder="Start a post" className="start-a-post" onClick={() => setModalOpen(true)}/>
             </div>
-            <CreatePost isOpen={isModalOpen} onClose={() => setModalOpen(!isModalOpen)} />
+            <Post isOpen={isModalOpen} onClose={() => setModalOpen(!isModalOpen)} />
             <div className="share-box-feed-entry-tool-bar">
                 <button className="share-box-feed-entry-tool-bar-button">
                     <img src={media} className="share-box-feed-entry-tool-bar-button-img"/>
@@ -65,7 +88,7 @@ const Feed = () => {
             </div>
             <div className="middle-content">
                 <Sharebox />
-                <Post />
+                <PostRendering />
             </div>
             <div className="follows-module-container"> 
                 <img src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png" alt="Advertise on LinkedIn" className="follows-module-image"></img>
