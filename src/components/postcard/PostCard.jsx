@@ -101,7 +101,9 @@ const Comment = ({ commentCounter, setCommentCounter, user_id, post_id }) => {
             commentContent: inputValue,
             user_id: user_id,
             post_id: post_id
-        })
+        }).then(
+            response => console.log(response)
+        )
         setPostedComment(inputValue);
         setIsRendered(true)
         setShowCommentPost(false)
