@@ -14,10 +14,6 @@ const liked = require("../../assets/liked.png");
 const Like = ({post_id, user_id, status, setCounter}) => {
     const [isLiked, setIsLiked] = useState(status);
 
-    if (status === "null") {
-        setIsLiked(false)
-    }
-
     useEffect(() => {
         setIsLiked(status)
     }, [status])
