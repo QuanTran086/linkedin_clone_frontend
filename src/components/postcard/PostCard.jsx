@@ -79,11 +79,10 @@ const Repost = ({ repost, setRepost }) => {
 }
 
 // Comment button
-const Comment = ({ commentCounter, setCommentCounter, user_id, post_id }) => {    
+const Comment = ({ commentCounter, setCommentCounter, user_id, post_id, user_avatar, username, description }) => {    
     const [inputValue, setInputValue] = useState('');
     const [showCommentPost, setShowCommentPost] = useState(false);
     const [isRendered, setIsRendered] = useState(false);
-    const [inputField, setInputField] = useState(true);
     const [deleteButton, setDeleteButton] = useState(false)
     const [postedComment, setPostedComment] = useState('');
 
@@ -101,9 +100,7 @@ const Comment = ({ commentCounter, setCommentCounter, user_id, post_id }) => {
             commentContent: inputValue,
             user_id: user_id,
             post_id: post_id
-        }).then(
-            response => console.log(response)
-        )
+        })
         setPostedComment(inputValue);
         setIsRendered(true)
         setShowCommentPost(false)
@@ -123,20 +120,18 @@ const Comment = ({ commentCounter, setCommentCounter, user_id, post_id }) => {
     
     return(
         <div>
-            {inputField && (
-                <div className="comment-box">
-                    <img src={defaultimage} className="comment-avatar"/>
-                    <div className="comment-input-container">
-                        <input className="comment-box-input" value={inputValue} onChange={handleComment} placeholder="Add a comment..."/>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24" focusable="false">
-                            <path d="M8 10.5A1.5 1.5 0 119.5 12 1.5 1.5 0 018 10.5zm6.5 1.5a1.5 1.5 0 10-1.5-1.5 1.5 1.5 0 001.5 1.5zm7.5 0A10 10 0 1112 2a10 10 0 0110 10zm-2 0a8 8 0 10-8 8 8 8 0 008-8zm-8 4a6 6 0 01-4.24-1.76l-.71.76a7 7 0 009.89 0l-.71-.71A6 6 0 0112 16z"></path>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24" focusable="false">
-                            <path d="M19 4H5a3 3 0 00-3 3v10a3 3 0 003 3h14a3 3 0 003-3V7a3 3 0 00-3-3zm1 13a1 1 0 01-.29.71L16 14l-2 2-6-6-4 4V7a1 1 0 011-1h14a1 1 0 011 1zm-2-7a2 2 0 11-2-2 2 2 0 012 2z"></path>
-                        </svg>
-                    </div>
+            <div className="comment-box">
+                <img src={defaultimage} className="comment-avatar"/>
+                <div className="comment-input-container">
+                    <input className="comment-box-input" value={inputValue} onChange={handleComment} placeholder="Add a comment..."/>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24" focusable="false">
+                        <path d="M8 10.5A1.5 1.5 0 119.5 12 1.5 1.5 0 018 10.5zm6.5 1.5a1.5 1.5 0 10-1.5-1.5 1.5 1.5 0 001.5 1.5zm7.5 0A10 10 0 1112 2a10 10 0 0110 10zm-2 0a8 8 0 10-8 8 8 8 0 008-8zm-8 4a6 6 0 01-4.24-1.76l-.71.76a7 7 0 009.89 0l-.71-.71A6 6 0 0112 16z"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24" focusable="false">
+                        <path d="M19 4H5a3 3 0 00-3 3v10a3 3 0 003 3h14a3 3 0 003-3V7a3 3 0 00-3-3zm1 13a1 1 0 01-.29.71L16 14l-2 2-6-6-4 4V7a1 1 0 011-1h14a1 1 0 011 1zm-2-7a2 2 0 11-2-2 2 2 0 012 2z"></path>
+                    </svg>
                 </div>
-            )}
+            </div>
             {showCommentPost && (
                 <div>
                     <button onClick={handePostButton} className="post-button">Post</button>
@@ -144,11 +139,11 @@ const Comment = ({ commentCounter, setCommentCounter, user_id, post_id }) => {
             )}
             {isRendered && (
                 <div className="comment-rendered">
-                    <img src={defaultimage} className="comment-done-avatar"/>
+                    <img src={user_avatar || defaultimage} className="comment-done-avatar"/>
                     <div className="comment-details">
                         <div className="comment-name-description">
-                            <div className="comment-name">Name</div>
-                            <div className="comment-description">Description</div>
+                            <div className="comment-name">{ username }</div>
+                            <div className="comment-description">{ description }</div>
                         </div>
                         <div className="comment-text">{postedComment}</div>
                     </div>
@@ -244,7 +239,7 @@ const PostCard = ({ postCard, setPostCard }) => {
                 </button>   
             </div>
             {open && (<Repost repost={postCard} setRepost={setPostCard}/>)}
-            {showCommentInput && <Comment commentCounter={commentCounter} user_id={postCard.user_id} post_id={postCard.post_id} setCommentCounter={setCommentCounter}/>}
+            {showCommentInput && <Comment commentCounter={commentCounter} user_id={postCard.user_id} post_id={postCard.post_id} user_avatar={postCard.user_avatar} username={postCard.username} description={postCard.description} setCommentCounter={setCommentCounter}/>}
         </div>
     )
 }
