@@ -10,28 +10,6 @@ import event from "../../assets/event.png";
 import article from "../../assets/article.png";
 import defaultImage from "../../assets/defaultimage.png";
 
-const PostRendering = () => {
-    const [post, setPost] = useState([{}])
-    const currentUser = JSON.parse(localStorage.getItem("user")).user_id
-
-    useEffect(() => {
-        Axios.post("http://localhost:5000/rendering-posts", {user_id: currentUser}).then(
-            response => { 
-                setPost(response.data)
-            }
-        )
-    }, [])
-
-    return (
-        <div>
-            {post.map((post) => (
-                <PostCard postCard={post} key={post.post_id} setPostCard={setPost}/>
-            ))}
-        </div>
-    );
-}
-
-
 const Sharebox = () => {
     const [isModalOpen, setModalOpen] = useState(false);
 
@@ -63,6 +41,17 @@ const Sharebox = () => {
 const Feed = () => {
     const user = JSON.parse(localStorage.getItem("user"))
 
+    const [post, setPost] = useState([{}])
+    const currentUser = JSON.parse(localStorage.getItem("user")).user_id
+
+    useEffect(() => {
+        Axios.post("http://localhost:5000/rendering-posts", {user_id: currentUser}).then(
+            response => { 
+                setPost(response.data)
+            }
+        )
+    }, [])
+
     return (
       <div>
         <Navbar />
@@ -88,7 +77,11 @@ const Feed = () => {
             </div>
             <div className="middle-content">
                 <Sharebox />
-                <PostRendering />
+                <div>
+                    {post.map((post) => (
+                        <PostCard postCard={post} key={post.post_id} setPostCard={setPost}/>
+                    ))}
+                </div>
             </div>
             <div className="follows-module-container"> 
                 <img src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png" alt="Advertise on LinkedIn" className="follows-module-image"></img>
