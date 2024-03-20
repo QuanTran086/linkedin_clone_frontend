@@ -79,12 +79,19 @@ const Repost = ({ repost, setRepost }) => {
 }
 
 // Comment button
-const Comment = ({ commentCounter, setCommentCounter, user_id, post_id, user_avatar, username, description }) => {    
+const Comment = ({ commentCounter, setCommentCounter, user_id, post_id, user_avatar, username, description, comment_content }) => {    
     const [inputValue, setInputValue] = useState('');
     const [showCommentPost, setShowCommentPost] = useState(false);
     const [isRendered, setIsRendered] = useState(false);
     const [deleteButton, setDeleteButton] = useState(false)
     const [postedComment, setPostedComment] = useState('');
+
+    useEffect(() => {
+        if (comment_content) {
+            setIsRendered(true)
+            setPostedComment(comment_content)
+        }
+    })
 
     const handleComment = (e) => {
         setInputValue(e.target.value);
@@ -100,7 +107,11 @@ const Comment = ({ commentCounter, setCommentCounter, user_id, post_id, user_ava
             commentContent: inputValue,
             user_id: user_id,
             post_id: post_id
-        })
+        }).then(
+            response => {
+                setPostedComment(response.data)
+            }
+        )
         setPostedComment(inputValue);
         setIsRendered(true)
         setShowCommentPost(false)
@@ -239,7 +250,7 @@ const PostCard = ({ postCard, setPostCard }) => {
                 </button>   
             </div>
             {open && (<Repost repost={postCard} setRepost={setPostCard}/>)}
-            {showCommentInput && <Comment commentCounter={commentCounter} user_id={postCard.user_id} post_id={postCard.post_id} user_avatar={postCard.user_avatar} username={postCard.username} description={postCard.description} setCommentCounter={setCommentCounter}/>}
+            {showCommentInput && <Comment commentCounter={commentCounter} user_id={postCard.user_id} post_id={postCard.post_id} user_avatar={postCard.user_avatar} username={postCard.username} description={postCard.description} comment_content={postCard.comment_content} setCommentCounter={setCommentCounter}/>}
         </div>
     )
 }
