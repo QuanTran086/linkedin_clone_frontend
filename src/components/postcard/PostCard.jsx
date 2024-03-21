@@ -79,7 +79,7 @@ const Repost = ({ repost, setRepost }) => {
 }
 
 // Comment button
-const Comment = ({ commentCounter, setCommentCounter, user_id, post_id, user_avatar, username, description, comment_content }) => {    
+const Comment = ({ commentCounter, setCommentCounter, user_id, post_id, user_avatar, username, description, comment_content, comment_id }) => {    
     const [inputValue, setInputValue] = useState('');
     const [showCommentPost, setShowCommentPost] = useState(false);
     const [isRendered, setIsRendered] = useState(false);
@@ -88,10 +88,10 @@ const Comment = ({ commentCounter, setCommentCounter, user_id, post_id, user_ava
 
     useEffect(() => {
         if (comment_content) {
-            setIsRendered(true)
-            setPostedComment(comment_content)
+            setIsRendered(true);
+            setPostedComment(comment_content);
         }
-    })
+    }, [comment_content]);
 
     const handleComment = (e) => {
         setInputValue(e.target.value);
@@ -110,13 +110,13 @@ const Comment = ({ commentCounter, setCommentCounter, user_id, post_id, user_ava
         }).then(
             response => {
                 setPostedComment(response.data)
+                setPostedComment(inputValue);
+            setIsRendered(true)
+            setShowCommentPost(false)
+            setInputValue('');
+            setCommentCounter(commentCounter + 1)
             }
         )
-        setPostedComment(inputValue);
-        setIsRendered(true)
-        setShowCommentPost(false)
-        setInputValue('');
-        setCommentCounter(commentCounter + 1)
     }
 
     const showingDeleteButton = () => {
@@ -124,9 +124,16 @@ const Comment = ({ commentCounter, setCommentCounter, user_id, post_id, user_ava
     }
 
     const deleting = () => {
-        setIsRendered(false)
-        setCommentCounter(commentCounter - 1)
-        setDeleteButton(!deleteButton)
+        Axios.post("http://localhost:5000/delete-comment", {
+            comment_id: comment_id,
+            post_id: post_id
+        }).then(
+            response => {
+                setCommentCounter(response.data)
+                setIsRendered(false)
+                setDeleteButton(!deleteButton)
+            }
+        )
     }
     
     return(
@@ -250,7 +257,7 @@ const PostCard = ({ postCard, setPostCard }) => {
                 </button>   
             </div>
             {open && (<Repost repost={postCard} setRepost={setPostCard}/>)}
-            {showCommentInput && <Comment commentCounter={commentCounter} user_id={postCard.user_id} post_id={postCard.post_id} user_avatar={postCard.user_avatar} username={postCard.username} description={postCard.description} comment_content={postCard.comment_content} setCommentCounter={setCommentCounter}/>}
+            {showCommentInput && <Comment commentCounter={commentCounter} user_id={postCard.user_id} post_id={postCard.post_id} user_avatar={postCard.user_avatar} username={postCard.username} description={postCard.description} comment_content={postCard.comment_content} setCommentCounter={setCommentCounter} comment_id={postCard.comment_id}/>}
         </div>
     )
 }
