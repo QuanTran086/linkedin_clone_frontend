@@ -41,43 +41,6 @@ const Like = ({post_id, user_id, status, setCounter}) => {
     )
 }
 
-// Repost button
-const Repost = ({ repost, setRepost }) => {
-
-    const Repost = () => {
-        var newRepost = {
-            "post_id": parseInt(localStorage.getItem('total post'))+1, 
-            "user_avatar": repost.user_avatar,
-            "name": repost.name,
-            "description": repost.description,
-            "created_date": new Date(),
-            "post_content": repost.post_content,
-            "post_image": repost.post_image,
-            "like": repost.like,
-            "comment": repost.comment,
-            "repost": repost.repost+1     
-        }
-
-        // Store to local storage and render
-        var existingPosts = JSON.parse(localStorage.getItem("post"));
-        existingPosts.push(newRepost);
-        setRepost(existingPosts);
-        localStorage.setItem('post', JSON.stringify(existingPosts));
-        localStorage.setItem('total post', existingPosts.length);
-    }
-
-    return (
-        <div className="repost-container">
-            <button className="repost-with-your-thought-button">
-                <span>Repost with your thought</span>
-            </button>
-            <button onClick={Repost} className="repost-button">
-                <span>Repost</span>
-            </button>
-        </div>
-    )
-}
-
 // Comment button
 const Comment = ({ commentCounter, setCommentCounter, user_id, post_id, user_avatar, username, description, comment_content, comment_id }) => {    
     const [inputValue, setInputValue] = useState('');
@@ -179,11 +142,13 @@ const Comment = ({ commentCounter, setCommentCounter, user_id, post_id, user_ava
     )
 }
 
-const PostCard = ({ postCard, setPostCard }) => {
+const PostCard = ({ postCard }) => {
     const [counter, setCounter] = useState(postCard.like_count);
     const [showCommentInput, setShowCommentInput] = useState(false)
     const [commentCounter, setCommentCounter] = useState(postCard.comment_count)
-    const [open, setOpen] = useState(false)
+
+    // Repost
+
 
     const showComment = () => {
         setShowCommentInput(true)
@@ -247,7 +212,7 @@ const PostCard = ({ postCard, setPostCard }) => {
                     <img src={comment} className="share-feed-action-bar-img"/>
                     <span>Comment</span>
                 </button>
-                <button onClick={() => setOpen(!open)} className="share-feed-action-bar-button">
+                <button className="share-feed-action-bar-button">
                     <img src={repost} className="share-feed-action-bar-img"/>
                     <span>Repost</span>
                 </button>
@@ -256,7 +221,6 @@ const PostCard = ({ postCard, setPostCard }) => {
                     <span>Send</span>
                 </button>   
             </div>
-            {open && (<Repost repost={postCard} setRepost={setPostCard}/>)}
             {showCommentInput && <Comment commentCounter={commentCounter} user_id={postCard.user_id} post_id={postCard.post_id} user_avatar={postCard.user_avatar} username={postCard.username} description={postCard.description} comment_content={postCard.comment_content} setCommentCounter={setCommentCounter} comment_id={postCard.comment_id}/>}
         </div>
     )

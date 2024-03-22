@@ -79,7 +79,7 @@ const Feed = () => {
                 <Sharebox />
                 <div>
                     {post.map((post) => (
-                        <PostCard postCard={post} key={post.post_id} setPostCard={setPost}/>
+                        <PostCard postCard={post} key={post.post_id} />
                     ))}
                 </div>
             </div>
