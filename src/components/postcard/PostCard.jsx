@@ -148,7 +148,11 @@ const PostCard = ({ postCard }) => {
     const [commentCounter, setCommentCounter] = useState(postCard.comment_count)
 
     // Repost
-
+    const hanldeRepost = () => {
+            Axios.post("http://localhost:5000/repost", {
+            post_id: postCard.post_id,
+        })
+    }
 
     const showComment = () => {
         setShowCommentInput(true)
@@ -212,7 +216,7 @@ const PostCard = ({ postCard }) => {
                     <img src={comment} className="share-feed-action-bar-img"/>
                     <span>Comment</span>
                 </button>
-                <button className="share-feed-action-bar-button">
+                <button className="share-feed-action-bar-button" onClick={hanldeRepost}>
                     <img src={repost} className="share-feed-action-bar-img"/>
                     <span>Repost</span>
                 </button>
