@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import Axios from "axios";
+import React, { useEffect, useState } from "react";
+import baseUrl from "../../apis/baseUrl";
 import './PostCard.css';
 import like from "../../assets/like.png";
 import repost from "../../assets/repost.png";
@@ -20,7 +19,7 @@ const Like = ({post_id, user_id, status, setCounter}) => {
 
     const likeButton = () => {
         setIsLiked(!isLiked);
-        Axios.post("http://localhost:5000/like", {
+        baseUrl.post("/like", {
             post_id: post_id,
             user_id: user_id,
             status: !isLiked
@@ -66,7 +65,7 @@ const Comment = ({ commentCounter, setCommentCounter, user_id, post_id, user_ava
     }
 
     const handePostButton = () => {
-        Axios.post("http://localhost:5000/comment", {
+        baseUrl.post("/comment", {
             commentContent: inputValue,
             user_id: user_id,
             post_id: post_id
@@ -87,7 +86,7 @@ const Comment = ({ commentCounter, setCommentCounter, user_id, post_id, user_ava
     }
 
     const deleting = () => {
-        Axios.post("http://localhost:5000/delete-comment", {
+        baseUrl.post("/delete-comment", {
             comment_id: comment_id,
             post_id: post_id
         }).then(
@@ -149,7 +148,7 @@ const PostCard = ({ postCard }) => {
 
     // Repost
     const hanldeRepost = () => {
-            Axios.post("http://localhost:5000/repost", {
+            baseUrl.post("/repost", {
             post_id: postCard.post_id,
         })
     }

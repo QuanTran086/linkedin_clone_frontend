@@ -1,5 +1,5 @@
 import React from "react";
-import Axios from "axios";
+import baseUrl from "../../apis/baseUrl";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import linkedin from "../../assets/linkedin.png"
@@ -21,7 +21,7 @@ const SignIn = () => {
     }
 
     const verify = () => {
-        Axios.post("http://localhost:5000/login", {
+        baseUrl.post("/login", {
             email: email,
             password: password
         }).then(

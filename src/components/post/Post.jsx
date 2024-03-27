@@ -1,6 +1,5 @@
-import React from "react";
-import { useState } from "react";
-import Axios from "axios";
+import React, { useState } from "react";
+import baseUrl from "../../apis/baseUrl";
 import "./Post.css"
 
 const Post = ({ isOpen, onClose }) => {
@@ -13,7 +12,7 @@ const Post = ({ isOpen, onClose }) => {
     }
 
     const posting = () => { 
-        Axios.post("http://localhost:5000/posts", {
+        baseUrl.post("/posts", {
             postContent: postContent,
             userId: user.user_id
         }).then(() => {

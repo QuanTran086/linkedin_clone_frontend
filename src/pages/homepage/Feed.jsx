@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Axios from "axios";
+import baseUrl from "../../apis/baseUrl";
 import "./Feed.css";
 import Navbar from "../../components/navbar/Navbar";
 import Post from "../../components/post/Post";
@@ -45,7 +45,7 @@ const Feed = () => {
     const currentUser = JSON.parse(localStorage.getItem("user")).user_id
 
     useEffect(() => {
-        Axios.post("http://localhost:5000/rendering-posts", {user_id: currentUser}).then(
+        baseUrl.post("/rendering-posts", {user_id: currentUser}).then(
             response => { 
                 setPost(response.data)
             }

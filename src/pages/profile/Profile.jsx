@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Axios from "axios";
+import baseUrl from "../../apis/baseUrl";
 import "./Profile.css";
 import NavBar from "../../components/navbar/Navbar";
 import Post from "../../components/post/Post";
@@ -30,7 +30,7 @@ const Profile = () => {
     }
 
     const updatePassword = () => {
-        Axios.post("http://localhost:5000/update-password", {
+        baseUrl.post("/update-password", {
             currentPassword: currentPassword,
             newPassword: newPassword,
             confirmedPassword: confirmedPassword

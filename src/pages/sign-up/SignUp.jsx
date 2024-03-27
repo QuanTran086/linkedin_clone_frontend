@@ -1,5 +1,5 @@
 import React from "react";
-import Axios from "axios";
+import baseUrl from "../../apis/baseUrl";
 import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import linkedin from "../../assets/linkedin.png"
@@ -77,7 +77,7 @@ const SignUp = () => {
 
     const handleStoring = (e) => {
         e.preventDefault()
-        Axios.post("http://localhost:5000/signup", {
+        baseUrl.post("/signup", {
             email: email,
             password: password,
             username: firstName + " " + lastName,
