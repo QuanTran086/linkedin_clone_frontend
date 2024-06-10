@@ -47,7 +47,7 @@ For the project to build, **these files must exist with exact filenames**:
 - `src/index.js` is the JavaScript entry point.
 
 ## User Flow
-![image](https://github.com/QuanTran086/linkedin_clone_frontend/assets/130350185/d8b23e31-e6eb-4800-bcd8-908036087e40)
+![Screenshot 2024-06-10 170529](https://github.com/QuanTran086/linkedin_clone_frontend/assets/130350185/94f1d024-021d-424e-9f66-d8a5eace4e57)
 
 1. **App Initialization**: Upon opening the app, users are presented with the option to either sign in to an existing account or sign up for a new one.
 
