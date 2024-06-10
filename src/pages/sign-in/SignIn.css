@@ -1,0 +1,54 @@
+.main-logo {
+    height: 34px;
+    margin-left: 25%;
+}
+
+.sign-in-title {
+    text-align: center;
+    font-weight: normal;
+}
+
+.sign-in-form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 40%;
+    margin-right: 40%;
+    gap: 10px;
+}
+
+.sign-in-form input {
+    width: 350px;
+    height: 32px;
+    border-radius: 4px;
+    padding-left: 8px;
+}
+
+.sign-in-form-email,
+.sign-in-form-password {
+    font-size: 14px;
+}
+
+.sign-in-form-forgot-password {
+    color: #0A66C2;
+}
+
+.sign-in-form-forgot-password:hover {
+    color: #0A66C2;
+    text-decoration: underline;
+}
+
+.sign-in-form-sign-in {
+    border: none;
+    background-color: #0A66C2;
+    color: white;
+    border-radius: 50px;
+    height: 48px;
+    width: 350px;
+}
+
+.sign-in-form-join-now {
+    border-radius: 50px;
+    height: 48px;
+    width: 350px;
+    background-color: white;
+}

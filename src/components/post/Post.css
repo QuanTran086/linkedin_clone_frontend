@@ -1,0 +1,60 @@
+.modal-overlay {
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    height: 50%;
+    width: 30%; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+}
+  
+.modal-overlay.open .modal-content {
+    transform: translateY(-200px);
+    opacity: 1;
+}
+.share-your-thought {
+    display: flex;
+    align-items: center;
+}
+
+textarea {
+    margin-top: 0%;
+    width: 100%;
+    height: 80%;
+    border: none;
+}
+
+.create-post-content {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-end; 
+    gap: 10px; 
+    height: 500px;
+}
+  
+.modal-post-button {
+    align-self: flex-end; 
+    background-color: #0a66c2;
+    color: white;
+    border-radius: 50px;
+    width: 90px;
+    height: 32px;
+    border: none;
+}

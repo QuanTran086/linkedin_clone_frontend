@@ -1,0 +1,63 @@
+/* Whole navbar */
+.global-navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Linkedin icon */
+.linkedin-icon {
+  width: 34px;
+  height: 34px;
+  margin-right: 4px;
+  color: #0a66c2;
+}
+
+/* Search bar */
+.global-search {
+  width: 400px;
+}
+
+.global-search-bar {
+  width: 280px;
+  height: 35px;
+  padding: 2px;
+  border: none;
+  border-radius: 5px;
+  background-color: #eef3f8;
+  background-size: 16px;
+  box-sizing: border-box;
+  padding: 0 40px;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg");
+  background-repeat: no-repeat;
+  background-position: 15px center;
+}
+
+
+.global-navbar-element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 16px;
+}
+
+.global-navbar-primary-link {
+  text-align: center;
+  align-items: center;
+  font-size: 12px;
+  color: #00000099;
+  text-decoration: none;
+}
+
+.profile-image {
+  width: 26px;
+  height: 26px;
+}
+
+.global-nav__icon--small {
+  color: black;
+}

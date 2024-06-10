@@ -1,0 +1,147 @@
+.main-logo {
+    height: 34px;
+    margin-left: 25%;
+}
+
+.sign-up-title {
+    text-align: center;
+    font-weight: normal;
+}
+
+.sign-up-form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 40%;
+    margin-right: 40%;
+    gap: 10px;
+}
+
+.sign-up-form input {
+    width: 350px;
+    height: 32px;
+    border-radius: 4px;
+    padding-left: 8px;
+}
+
+.sign-up-form-email,
+.sign-up-form-password {
+    font-size: 14px;
+}
+
+.sign-up-form-sign-up {
+    border: none;
+    background-color: #0A66C2;
+    color: white;
+    border-radius: 50px;
+    height: 48px;
+    width: 350px;
+}
+
+.sign-up-form-join-now {
+    border-radius: 50px;
+    height: 48px;
+    width: 350px;
+    background-color: white;
+}
+
+.sign-up-text {
+    color: #0A66C2;
+}
+
+.name-title {
+    text-align: center;
+    font-weight: normal;
+}
+
+.name-form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 40%;
+    margin-right: 40%;
+    gap: 10px;
+}
+
+.name-form input {
+    width: 350px;
+    height: 32px;
+    border-radius: 4px;
+    padding-left: 8px;
+}
+
+.name-email,
+.name-password {
+    font-size: 14px;
+}
+
+.name-continue {
+    border: none;
+    background-color: #0A66C2;
+    color: white;
+    border-radius: 50px;
+    height: 48px;
+    width: 350px;
+}
+
+.description-title {
+    text-align: center;
+    font-weight: normal;
+}
+
+.description-form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 40%;
+    margin-right: 40%;
+    gap: 10px;
+}
+
+.description-form input {
+    width: 350px;
+    height: 32px;
+    border-radius: 4px;
+    padding-left: 8px;
+}
+
+.description-job,
+.description-company {
+    font-size: 14px;
+}
+
+.description-continue {
+    border: none;
+    background-color: #0A66C2;
+    color: white;
+    border-radius: 50px;
+    height: 48px;
+    width: 350px;
+}
+
+.avatar-title {
+    text-align: center;
+    font-weight: normal;
+}
+
+.avatar-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.profile-avatar {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+
+.avatar-continue {
+    border: none;
+    background-color: #0A66C2;
+    color: white;
+    border-radius: 50px;
+    height: 48px;
+    width: 350px;
+}
